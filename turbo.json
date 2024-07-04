@@ -1,0 +1,21 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"]
+    },
+    "clean": {},
+    "check": {
+      "dependsOn": ["check:format", "check:lint"]
+    },
+    "check:format": {},
+    "check:lint": {},
+    "fix": {
+      "dependsOn": ["fix:format", "fix:lint"]
+    },
+    "fix:format": {},
+    "fix:lint": {},
+    "start": {},
+    "test": {}
+  }
+}

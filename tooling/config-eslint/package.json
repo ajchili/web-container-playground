@@ -1,0 +1,14 @@
+{
+  "name": "config-eslint",
+  "version": "1.0.0",
+  "private": true,
+  "files": [
+    "eslint.config.js"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./eslint.config.js"
+  },
+  "author": "Kirin Patel <contact@kirinpatel.com>",
+  "license": "MIT"
+}

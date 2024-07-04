@@ -1,0 +1,7 @@
+{
+  "extends": "@tsconfig/node20",
+  "compilerOptions": {
+    "lib": ["DOM", "ESNext"],
+    "jsx": "react-jsx"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@react-template/empty",
+  "packageManager": "npm@10.7.0",
+  "scripts": {
+    "build": "turbo run build",
+    "clean": "turbo run clean",
+    "check": "turbo run check",
+    "check:format": "turbo run check:format",
+    "check:lint": "turbo run check:lint",
+    "fix": "turbo run fix",
+    "fix:format": "turbo run fix:format",
+    "fix:lint": "turbo run fix:lint",
+    "start": "turbo run start",
+    "test": "turbo run test"
+  },
+  "workspaces": [
+    "packages/*",
+    "tooling/*"
+  ],
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.2",
+    "turbo": "^2.0.6",
+    "typescript-eslint": "^7.15.0"
+  }
+}
