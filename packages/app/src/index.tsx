@@ -16,7 +16,9 @@ const router = createRouter({ routeTree });
 
 const root = createRoot($app);
 root.render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>,
+  // TODO: Figure out initial load bug where initial page render double renders component
+  // https://github.com/TanStack/router/issues/861
+  // <StrictMode>
+  <RouterProvider router={router} />
+  // </StrictMode>,
 );
