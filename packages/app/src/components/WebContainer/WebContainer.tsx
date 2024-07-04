@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { WebContainer as RealWebContainer } from "@webcontainer/api";
 
 export const WebContainer = (): JSX.Element => {
+  const [value, setValue] = useState(`console.log("42");`);
   const [booting, setBooting] = useState(false);
   const webContainerInstance = useRef<RealWebContainer>();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -27,9 +28,21 @@ export const WebContainer = (): JSX.Element => {
 
   useEffect(() => {
     (async () => {
-      const echoProcess = await webContainerInstance.current?.spawn("echo", [
-        "Hello, World!",
+      if (!webContainerInstance.current) {
+        return;
+      }
+
+      await webContainerInstance.current.fs.writeFile("/index.js", value);
+      const echoProcess = await webContainerInstance.current.spawn("node", [
+        "index.js",
       ]);
+
+      console.log(
+        new TextDecoder("utf-8").decode(
+          await webContainerInstance.current.fs.readFile("/index.js")
+        )
+      );
+
       echoProcess?.output.pipeTo(
         new WritableStream({
           write(data) {
@@ -37,12 +50,18 @@ export const WebContainer = (): JSX.Element => {
           },
         })
       );
+
+      echoProcess.exit;
     })();
-  }, [webContainerInstance.current]);
+  }, [webContainerInstance.current, value]);
 
   return (
     <div>
-      <h1>Pending</h1>
+      <textarea
+        ref={textareaRef}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
     </div>
   );
 };
