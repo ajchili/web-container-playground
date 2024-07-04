@@ -19,6 +19,6 @@ root.render(
   // TODO: Figure out initial load bug where initial page render double renders component
   // https://github.com/TanStack/router/issues/861
   // <StrictMode>
-  <RouterProvider router={router} />
+  <RouterProvider router={router} />,
   // </StrictMode>,
 );
