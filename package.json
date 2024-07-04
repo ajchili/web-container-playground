@@ -1,5 +1,5 @@
 {
-  "name": "@react-template/empty",
+  "name": "@node-web-containers/empty",
   "packageManager": "npm@10.7.0",
   "scripts": {
     "build": "turbo run build",
